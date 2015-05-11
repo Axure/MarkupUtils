@@ -35,7 +35,18 @@ public:
         this->_leftTag = leftTag;
         this->_rightTag = rightTag;
     }
+
+    // @Solution: http://stackoverflow.com/questions/30168553/invalid-operands-to-binary-expression-when-using-custom-struct-as-index-of-map
+    bool operator< (const Tag& rhs) const
+    {
+        return this->_leftTag < rhs._rightTag ||
+               (this->_leftTag == rhs._leftTag && this->_rightTag < rhs._rightTag);
+    }
 };
+
+//struct Tag {
+//    std::string left_tag, right_tag;
+//};
 
 class Syntax {
 private:
@@ -59,7 +70,10 @@ public:
 
     void add_delimiter(const std::string &leftDelimiter, const std::string &rightDelimiter) {
         Tag __tag = Tag(leftDelimiter, rightDelimiter);
-        _tags[__tag] = true;
+//        Tag __tag;
+//        __tag.left_tag = leftDelimiter;
+//        __tag.right_tag = rightDelimiter;
+        this->_tags[__tag] = true;
 
     }
 };

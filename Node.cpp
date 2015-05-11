@@ -7,13 +7,13 @@
 Node::Node(std::string inString, Syntax syntax) {
 
 //    this->_tagName = Tag(inString, "");
-//    this->_set_tagName(Tag(inString, ""));
+    this->_set_tagName(Tag(inString, ""));
 }
 
 std::string Node::to_string() {
 
     std::string __result;
-    __result += this->_tagName.get_leftTag().;
+    __result += this->_tagName.get_leftTag();
     for(auto const &it : Node::_contents) {
         __result += to_string(it);
     }
