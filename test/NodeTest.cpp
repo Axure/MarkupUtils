@@ -16,10 +16,11 @@
 
 int main() {
     Syntax mySyntax;
-    mySyntax.add_delimiter("<div>", "</div>");
-    mySyntax.add_delimiter("<a>", "</a>");
+    mySyntax.set_type(Type::HTML);
+    mySyntax.add_tag("<div>", "</div>");
+    mySyntax.add_tag("<a>", "</a>");
 
     Node myNode = Node("<div>ff</div>", mySyntax);
-
+    std::cout << myNode.self_to_string() << std::endl;
 
 }

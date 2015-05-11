@@ -9,3 +9,8 @@
 Syntax::~Syntax() {
 
 }
+
+void Syntax::build_trie() {
+
+    
+}

@@ -20,10 +20,12 @@ class Node {
  * @Description: This is a class for DOM-node-like thing
  */
 private:
-    Type _type;
+    Type _type; // This is not more important.
     Tag _tagName; // @Note: This is not a XML specific library, so we won't omit the < > automatically
     std::map<std::string, std::string> _properties;
-    std::map<int, boost::any> _contents;
+    std::map<int, boost::any> _contents; // @Description: the innerHTML-like thing.
+
+
     // @Thoughts: Maybe I need to use Boost.Any here.
     void _set_tagName(Tag tagName) {
         this->_tagName = tagName;
@@ -41,10 +43,11 @@ private:
     }
 
 
+
 public:
 
-    Node(std::string inString, Syntax syntax);
-    std::string to_string();
+    Node(std::string inString, Syntax syntax, Tag tag);
+    std::string self_to_string();
     std::string to_string(Node node);
     std::string to_string(boost::any content);
 

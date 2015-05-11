@@ -12,7 +12,7 @@ class Parser {
 
 private:
     Syntax _syntax;
-    static void _parse(Syntax syntax, std::string input);
+    void _parse(Syntax syntax, std::string input);
 public:
     Parser(Syntax syntax);
     ~Parser();
