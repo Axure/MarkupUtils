@@ -7,15 +7,40 @@
 
 #include <vector>
 #include <map>
+#include <string>
 
 enum class Type {
     XML, HTML, JSX, MARKDOWN, BBCODE
 };
 
+class Tag {
+private:
+    std::string _leftTag, _rightTag;
+
+public:
+
+    const std::string &get_leftTag() const {
+        return _leftTag;
+    }
+
+    const std::string &get_rightTag() const {
+        return _rightTag;
+    }
+
+    Tag() {
+
+    };
+
+    Tag(const std::string &leftTag, const std::string &rightTag) {
+        this->_leftTag = leftTag;
+        this->_rightTag = rightTag;
+    }
+};
+
 class Syntax {
 private:
-    Type _type
-    std::map<std::string, bool> _delimiters; // TODO: compare the performance of Map and Vector
+    Type _type;
+    std::map<Tag, bool> _tags; // TODO: compare the performance of Map and Vector
     // @Note: force it to use SBT.
 public:
     Syntax() {
@@ -32,8 +57,10 @@ public:
         Syntax::_type = _type;
     }
 
-    void add_delimiter(const std::string &delimiterName) {
-        _delimiters[delimiterName] = true;
+    void add_delimiter(const std::string &leftDelimiter, const std::string &rightDelimiter) {
+        Tag __tag = Tag(leftDelimiter, rightDelimiter);
+        _tags[__tag] = true;
+
     }
 };
 
